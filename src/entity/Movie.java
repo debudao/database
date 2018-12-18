@@ -14,9 +14,7 @@ public class Movie {
 		return mid;
 	}
 
-	public void setMid(int mid) {
-		this.mid = mid;
-	}
+	
 
 	public String getMname() {
 		return mname;
@@ -66,4 +64,7 @@ public class Movie {
 		this.mscore = mscore;
 	}
 
+	public void setMid(int mid) {
+		this.mid = mid;
+	}
 }
