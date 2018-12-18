@@ -7,8 +7,61 @@ public class Movie {
 	private String type;
 	private String mainActors;
 	private String area;
-	private String director;
 	private float mscore;
+	private String alias;
+	private String intro;
+	private String imdbUrl;
+	private String language;
+	private String releaseDate;
+	private int duration;
+
+	public String getAlias() {
+		return alias;
+	}
+
+	public void setAlias(String alias) {
+		this.alias = alias;
+	}
+
+	public String getIntro() {
+		return intro;
+	}
+
+	public void setIntro(String intro) {
+		this.intro = intro;
+	}
+
+	public String getImdbUrl() {
+		return imdbUrl;
+	}
+
+	public void setImdbUrl(String imdbUrl) {
+		this.imdbUrl = imdbUrl;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public String getReleaseDate() {
+		return releaseDate;
+	}
+
+	public void setReleaseDate(String releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+
+	public int getDuration() {
+		return duration;
+	}
+
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
 
 	public int getMid() {
 		return mid;
@@ -50,13 +103,6 @@ public class Movie {
 		this.area = area;
 	}
 
-	public String getDirector() {
-		return director;
-	}
-
-	public void setDirector(String director) {
-		this.director = director;
-	}
 
 	public float getMscore() {
 		return mscore;
