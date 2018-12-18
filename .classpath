@@ -2,5 +2,10 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="D:/vs/Desktop/c3p0-0.9.5.1.jar"/>
+	<classpathentry kind="lib" path="D:/vs/Desktop/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/vs/Desktop/commons-pool2-2.4.2.jar"/>
+	<classpathentry kind="lib" path="D:/vs/Desktop/mchange-commons-java-0.2.10.jar"/>
+	<classpathentry kind="lib" path="D:/vs/Desktop/sqljdbc4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
