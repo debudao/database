@@ -11,7 +11,7 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 19/12/2018 18:20:25
+ Date: 19/12/2018 18:53:40
 */
 
 SET NAMES utf8mb4;
@@ -276,6 +276,88 @@ CREATE TABLE `tag`  (
   `tagname` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`mid`, `tagname`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tag
+-- ----------------------------
+INSERT INTO `tag` VALUES (1, '2018');
+INSERT INTO `tag` VALUES (1, '中国大陆');
+INSERT INTO `tag` VALUES (1, '人性');
+INSERT INTO `tag` VALUES (1, '剧情');
+INSERT INTO `tag` VALUES (1, '生命');
+INSERT INTO `tag` VALUES (1, '真实事件改编');
+INSERT INTO `tag` VALUES (1, '社会');
+INSERT INTO `tag` VALUES (1, '黑色幽默');
+INSERT INTO `tag` VALUES (2, '人生');
+INSERT INTO `tag` VALUES (2, '励志');
+INSERT INTO `tag` VALUES (2, '历史');
+INSERT INTO `tag` VALUES (2, '国产');
+INSERT INTO `tag` VALUES (2, '成长');
+INSERT INTO `tag` VALUES (2, '文艺');
+INSERT INTO `tag` VALUES (2, '清华');
+INSERT INTO `tag` VALUES (2, '青春');
+INSERT INTO `tag` VALUES (3, '2018');
+INSERT INTO `tag` VALUES (3, '中国大陆');
+INSERT INTO `tag` VALUES (3, '人性');
+INSERT INTO `tag` VALUES (3, '剧情');
+INSERT INTO `tag` VALUES (3, '古装');
+INSERT INTO `tag` VALUES (3, '武侠');
+INSERT INTO `tag` VALUES (3, '水墨');
+INSERT INTO `tag` VALUES (3, '视觉艺术');
+INSERT INTO `tag` VALUES (3, '黑白');
+INSERT INTO `tag` VALUES (4, '2017');
+INSERT INTO `tag` VALUES (4, '仙侠');
+INSERT INTO `tag` VALUES (4, '仙神');
+INSERT INTO `tag` VALUES (4, '古装');
+INSERT INTO `tag` VALUES (4, '小说改编');
+INSERT INTO `tag` VALUES (4, '爱情');
+INSERT INTO `tag` VALUES (4, '特效');
+INSERT INTO `tag` VALUES (4, '玄幻');
+INSERT INTO `tag` VALUES (5, '2018');
+INSERT INTO `tag` VALUES (5, '中国大陆');
+INSERT INTO `tag` VALUES (5, '剧情');
+INSERT INTO `tag` VALUES (5, '动作');
+INSERT INTO `tag` VALUES (5, '民国');
+INSERT INTO `tag` VALUES (5, '黑色幽默');
+INSERT INTO `tag` VALUES (6, '2018');
+INSERT INTO `tag` VALUES (6, '中国大陆');
+INSERT INTO `tag` VALUES (6, '剧情');
+INSERT INTO `tag` VALUES (6, '怀旧');
+INSERT INTO `tag` VALUES (6, '日本');
+INSERT INTO `tag` VALUES (6, '爱情');
+INSERT INTO `tag` VALUES (7, '冒险');
+INSERT INTO `tag` VALUES (7, '加勒比海盗');
+INSERT INTO `tag` VALUES (7, '动作');
+INSERT INTO `tag` VALUES (7, '奇幻');
+INSERT INTO `tag` VALUES (7, '海盗');
+INSERT INTO `tag` VALUES (7, '约翰尼德普');
+INSERT INTO `tag` VALUES (7, '美国');
+INSERT INTO `tag` VALUES (8, '亲情');
+INSERT INTO `tag` VALUES (8, '人生');
+INSERT INTO `tag` VALUES (8, '剧情');
+INSERT INTO `tag` VALUES (8, '爱情');
+INSERT INTO `tag` VALUES (8, '秋日传奇');
+INSERT INTO `tag` VALUES (8, '经典');
+INSERT INTO `tag` VALUES (8, '美国');
+INSERT INTO `tag` VALUES (8, '西部');
+INSERT INTO `tag` VALUES (9, '中国大陆');
+INSERT INTO `tag` VALUES (9, '军事');
+INSERT INTO `tag` VALUES (9, '动作');
+INSERT INTO `tag` VALUES (9, '战争');
+INSERT INTO `tag` VALUES (9, '爱国');
+INSERT INTO `tag` VALUES (10, '人生');
+INSERT INTO `tag` VALUES (10, '剧情');
+INSERT INTO `tag` VALUES (10, '励志');
+INSERT INTO `tag` VALUES (10, '印度');
+INSERT INTO `tag` VALUES (10, '喜剧');
+INSERT INTO `tag` VALUES (10, '宝莱坞');
+INSERT INTO `tag` VALUES (10, '搞笑');
+INSERT INTO `tag` VALUES (10, '经典');
+INSERT INTO `tag` VALUES (11, '剧情');
+INSERT INTO `tag` VALUES (11, '悬疑');
+INSERT INTO `tag` VALUES (11, '科幻');
+INSERT INTO `tag` VALUES (11, '美国');
+INSERT INTO `tag` VALUES (11, '魔术');
 
 -- ----------------------------
 -- Table structure for user
