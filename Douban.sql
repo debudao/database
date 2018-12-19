@@ -11,7 +11,7 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 19/12/2018 16:20:38
+ Date: 19/12/2018 16:50:12
 */
 
 SET NAMES utf8mb4;
@@ -56,6 +56,21 @@ CREATE TABLE `actormovie`  (
   CONSTRAINT `actormovie_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `movie` (`mid`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `actormovie_ibfk_2` FOREIGN KEY (`aid`) REFERENCES `actor` (`aid`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of actormovie
+-- ----------------------------
+INSERT INTO `actormovie` VALUES (1, 1);
+INSERT INTO `actormovie` VALUES (5, 2);
+INSERT INTO `actormovie` VALUES (6, 3);
+INSERT INTO `actormovie` VALUES (3, 4);
+INSERT INTO `actormovie` VALUES (4, 5);
+INSERT INTO `actormovie` VALUES (2, 6);
+INSERT INTO `actormovie` VALUES (9, 7);
+INSERT INTO `actormovie` VALUES (10, 8);
+INSERT INTO `actormovie` VALUES (7, 9);
+INSERT INTO `actormovie` VALUES (11, 10);
+INSERT INTO `actormovie` VALUES (8, 11);
 
 -- ----------------------------
 -- Table structure for comment
