@@ -29,6 +29,8 @@ public class UserDao {
 		ps.setString(4, user.getPhone());
 		int flag=ps.executeUpdate();
 		
+		ps.close();
+		C3P0JdbcUtil.release(conn, null, null);
 		return flag==1?true:false;	
 	}
 	
@@ -43,6 +45,8 @@ public class UserDao {
 		ps.setInt(4, user.getUid());
 		int flag=ps.executeUpdate();
 		
+		ps.close();
+		C3P0JdbcUtil.release(conn, null, null);
 		return flag==1?true:false;		
 	}
 	
