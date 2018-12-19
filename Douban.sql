@@ -11,7 +11,7 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 19/12/2018 18:53:40
+ Date: 19/12/2018 19:09:39
 */
 
 SET NAMES utf8mb4;
@@ -364,7 +364,7 @@ INSERT INTO `tag` VALUES (11, '魔术');
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
-  `uid` int(10) NOT NULL,
+  `uid` int(10) NOT NULL AUTO_INCREMENT,
   `email` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `password` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `uname` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -372,5 +372,29 @@ CREATE TABLE `user`  (
   PRIMARY KEY (`uid`) USING BTREE,
   UNIQUE INDEX `email`(`email`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES (1, '100000@qq.com', '1234566', '张三', '13051337666');
+INSERT INTO `user` VALUES (2, '111111@qq.com', '124124', '李四', '13176528765');
+INSERT INTO `user` VALUES (3, '222222@qq.com', '1234124', '王五', '13276518765');
+INSERT INTO `user` VALUES (4, '123hasjg@163.com', '123asfa', '王云', '15126765498');
+INSERT INTO `user` VALUES (5, 'qlkas@gmail.com', 'asdafsdfvs', '陈瑞', '17098236798');
+INSERT INTO `user` VALUES (6, '1307657@qq.com', 'asdfasfgbcv', '赵子龙', '17376778760');
+INSERT INTO `user` VALUES (7, 'Lkasjd@163.com', '12378621', '王芳', '13065789807');
+INSERT INTO `user` VALUES (8, 'LM123@bjfu.edu.cn', 'hhhhhh', '李明', '15876809854');
+INSERT INTO `user` VALUES (9, '7657896@qq.com', 'xxxxxx', '马超', '18387654017');
+INSERT INTO `user` VALUES (10, 'leipeng@gmail.com', '100000', '雷朋', '19012387878');
+INSERT INTO `user` VALUES (11, 'huanglin@163.com', 'asjkhdjkasd', '黄琳', '13337862450');
+INSERT INTO `user` VALUES (12, 'LMiss@163.com', '12asdasdx', 'LMiss', '18372678760');
+INSERT INTO `user` VALUES (13, 'FL5921@163.com', '123456789~', 'FL5921', '18176290876');
+INSERT INTO `user` VALUES (14, 'Edison@163.com', '987654321~', 'Edison', '18312378876');
+INSERT INTO `user` VALUES (15, 'Debudao@gmail.com', '1789065432', 'Debudao', '13700902241');
+INSERT INTO `user` VALUES (16, 'Frake123@163.com', '13051678297', 'Frake', '15567809876');
+INSERT INTO `user` VALUES (17, 'Wangxz@gmail.com', 'dasjdfhg', 'Wxz', '17782908765');
+INSERT INTO `user` VALUES (18, 'Llei145@163.com', 'adsghgjjhvjk', 'Llei', '19187260987');
+INSERT INTO `user` VALUES (19, 'Wusuowei@gmail.com', '123456', 'Wusuowei', '18765309876');
+INSERT INTO `user` VALUES (20, '15849076578@qq.com', '6543231', 'Fyc', '13051477289');
 
 SET FOREIGN_KEY_CHECKS = 1;
