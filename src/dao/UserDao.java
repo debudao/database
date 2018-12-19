@@ -18,6 +18,13 @@ public class UserDao {
 		conn = C3P0JdbcUtil.getConnection();
 	}
 	
+	
+	/**
+	 * add a user to the table "User"
+	 * @param user the user you want to add
+	 * @return if success return true,else return false
+	 * @throws SQLException
+	 */
 	public boolean addUser(User user) throws SQLException{
 		String sql="insert User(email,password,uname,phone)"
 				+ " values(?,?,?,?)";
@@ -34,6 +41,12 @@ public class UserDao {
 		return flag==1?true:false;	
 	}
 	
+	/**
+	 * update the data of the user
+	 * @param user the user you want to update
+	 * @return if success return true,else return false
+	 * @throws SQLException
+	 */
 	public boolean updateUser(User user) throws SQLException{
 		String sql="update User set password=?,uname=?,phone=? "
 				+ "where uid=?";
