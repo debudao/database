@@ -11,7 +11,7 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 19/12/2018 18:07:01
+ Date: 19/12/2018 18:20:25
 */
 
 SET NAMES utf8mb4;
@@ -182,11 +182,44 @@ INSERT INTO `movie` VALUES (11, '致命魔术', '剧情 / 悬疑 / 惊悚', '美
 -- ----------------------------
 DROP TABLE IF EXISTS `playwright`;
 CREATE TABLE `playwright`  (
-  `playwrightid` int(10) NOT NULL,
+  `playwrightid` int(10) NOT NULL AUTO_INCREMENT,
   `playwrightname` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`playwrightid`) USING BTREE,
   INDEX `playwrightid`(`playwrightid`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of playwright
+-- ----------------------------
+INSERT INTO `playwright` VALUES (1, '李晗');
+INSERT INTO `playwright` VALUES (2, '刘晗');
+INSERT INTO `playwright` VALUES (3, '麦灵');
+INSERT INTO `playwright` VALUES (4, '张亚亮');
+INSERT INTO `playwright` VALUES (5, '唐七');
+INSERT INTO `playwright` VALUES (6, '威廉·D·威特利夫');
+INSERT INTO `playwright` VALUES (7, 'Susan Shilliday');
+INSERT INTO `playwright` VALUES (8, '李芳芳');
+INSERT INTO `playwright` VALUES (9, '岩井俊二');
+INSERT INTO `playwright` VALUES (10, '李威');
+INSERT INTO `playwright` VALUES (11, '张艺谋');
+INSERT INTO `playwright` VALUES (12, '姜文');
+INSERT INTO `playwright` VALUES (13, '何冀平');
+INSERT INTO `playwright` VALUES (14, '李非');
+INSERT INTO `playwright` VALUES (15, '孙悦');
+INSERT INTO `playwright` VALUES (16, '张北海');
+INSERT INTO `playwright` VALUES (17, '泰德·艾略特');
+INSERT INTO `playwright` VALUES (18, '特里·鲁西奥');
+INSERT INTO `playwright` VALUES (19, '斯图尔特·贝亚蒂耶');
+INSERT INTO `playwright` VALUES (20, '杰·沃尔伯特');
+INSERT INTO `playwright` VALUES (21, '吴京');
+INSERT INTO `playwright` VALUES (22, '董群');
+INSERT INTO `playwright` VALUES (23, '刘毅');
+INSERT INTO `playwright` VALUES (24, '维德胡·维诺德·乔普拉');
+INSERT INTO `playwright` VALUES (25, '拉吉库马尔·希拉尼');
+INSERT INTO `playwright` VALUES (26, '阿西奇·乔希');
+INSERT INTO `playwright` VALUES (27, '乔纳森·诺兰');
+INSERT INTO `playwright` VALUES (28, '克里斯托弗·诺兰');
+INSERT INTO `playwright` VALUES (29, '克里斯托弗·普瑞丝特');
 
 -- ----------------------------
 -- Table structure for playwrightmovie
@@ -200,6 +233,39 @@ CREATE TABLE `playwrightmovie`  (
   CONSTRAINT `playwrightmovie_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `movie` (`mid`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `playwrightmovie_ibfk_2` FOREIGN KEY (`playwrightid`) REFERENCES `playwright` (`playwrightid`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of playwrightmovie
+-- ----------------------------
+INSERT INTO `playwrightmovie` VALUES (4, 1);
+INSERT INTO `playwrightmovie` VALUES (4, 2);
+INSERT INTO `playwrightmovie` VALUES (4, 3);
+INSERT INTO `playwrightmovie` VALUES (4, 4);
+INSERT INTO `playwrightmovie` VALUES (4, 5);
+INSERT INTO `playwrightmovie` VALUES (8, 6);
+INSERT INTO `playwrightmovie` VALUES (8, 7);
+INSERT INTO `playwrightmovie` VALUES (2, 8);
+INSERT INTO `playwrightmovie` VALUES (6, 9);
+INSERT INTO `playwrightmovie` VALUES (3, 10);
+INSERT INTO `playwrightmovie` VALUES (3, 11);
+INSERT INTO `playwrightmovie` VALUES (5, 12);
+INSERT INTO `playwrightmovie` VALUES (5, 13);
+INSERT INTO `playwrightmovie` VALUES (5, 14);
+INSERT INTO `playwrightmovie` VALUES (5, 15);
+INSERT INTO `playwrightmovie` VALUES (5, 16);
+INSERT INTO `playwrightmovie` VALUES (7, 17);
+INSERT INTO `playwrightmovie` VALUES (7, 18);
+INSERT INTO `playwrightmovie` VALUES (7, 19);
+INSERT INTO `playwrightmovie` VALUES (7, 20);
+INSERT INTO `playwrightmovie` VALUES (9, 21);
+INSERT INTO `playwrightmovie` VALUES (9, 22);
+INSERT INTO `playwrightmovie` VALUES (9, 23);
+INSERT INTO `playwrightmovie` VALUES (10, 24);
+INSERT INTO `playwrightmovie` VALUES (10, 25);
+INSERT INTO `playwrightmovie` VALUES (10, 26);
+INSERT INTO `playwrightmovie` VALUES (11, 27);
+INSERT INTO `playwrightmovie` VALUES (11, 28);
+INSERT INTO `playwrightmovie` VALUES (11, 29);
 
 -- ----------------------------
 -- Table structure for tag
