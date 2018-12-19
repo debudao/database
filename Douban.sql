@@ -11,7 +11,7 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 19/12/2018 16:50:12
+ Date: 19/12/2018 18:07:01
 */
 
 SET NAMES utf8mb4;
@@ -94,10 +94,26 @@ CREATE TABLE `comment`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `director`;
 CREATE TABLE `director`  (
-  `directorid` int(10) NOT NULL,
+  `directorid` int(10) NOT NULL AUTO_INCREMENT,
   `directorname` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`directorid`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of director
+-- ----------------------------
+INSERT INTO `director` VALUES (1, '克里斯托弗·诺兰');
+INSERT INTO `director` VALUES (2, '徐峥');
+INSERT INTO `director` VALUES (4, '张艺谋');
+INSERT INTO `director` VALUES (5, '姜文');
+INSERT INTO `director` VALUES (6, '吴京');
+INSERT INTO `director` VALUES (7, '李芳芳');
+INSERT INTO `director` VALUES (8, '戈尔·维宾斯基');
+INSERT INTO `director` VALUES (9, '爱德华·兹威克');
+INSERT INTO `director` VALUES (10, '拉吉库马尔·希拉尼');
+INSERT INTO `director` VALUES (11, '岩井俊二');
+INSERT INTO `director` VALUES (12, ' 赵小丁');
+INSERT INTO `director` VALUES (13, ' 安东尼·拉默里纳拉');
 
 -- ----------------------------
 -- Table structure for directormovie
@@ -111,6 +127,22 @@ CREATE TABLE `directormovie`  (
   CONSTRAINT `directormovie_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `movie` (`mid`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `directormovie_ibfk_2` FOREIGN KEY (`directorid`) REFERENCES `director` (`directorid`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of directormovie
+-- ----------------------------
+INSERT INTO `directormovie` VALUES (11, 1);
+INSERT INTO `directormovie` VALUES (1, 2);
+INSERT INTO `directormovie` VALUES (3, 4);
+INSERT INTO `directormovie` VALUES (5, 5);
+INSERT INTO `directormovie` VALUES (9, 6);
+INSERT INTO `directormovie` VALUES (2, 7);
+INSERT INTO `directormovie` VALUES (7, 8);
+INSERT INTO `directormovie` VALUES (8, 9);
+INSERT INTO `directormovie` VALUES (10, 10);
+INSERT INTO `directormovie` VALUES (6, 11);
+INSERT INTO `directormovie` VALUES (4, 12);
+INSERT INTO `directormovie` VALUES (4, 13);
 
 -- ----------------------------
 -- Table structure for movie
