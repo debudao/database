@@ -1,17 +1,17 @@
 /*
- Navicat Premium Data Transfer
+ Navicat MySQL Data Transfer
 
- Source Server         : sql1
+ Source Server         : 本地
  Source Server Type    : MySQL
- Source Server Version : 80013
+ Source Server Version : 80011
  Source Host           : localhost:3306
- Source Schema         : Douban2
+ Source Schema         : doubanban
 
  Target Server Type    : MySQL
- Target Server Version : 80013
+ Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 19/12/2018 20:18:51
+ Date: 20/12/2018 14:10:15
 */
 
 SET NAMES utf8mb4;
@@ -21,18 +21,17 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- Table structure for actor
 -- ----------------------------
 DROP TABLE IF EXISTS `actor`;
-CREATE TABLE `actor` (
+CREATE TABLE `actor`  (
   `aid` int(10) NOT NULL AUTO_INCREMENT,
   `aname` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `asex` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `aBirthday` date DEFAULT NULL,
+  `asex` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `aBirthday` date NULL DEFAULT NULL,
   PRIMARY KEY (`aid`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of actor
 -- ----------------------------
-BEGIN;
 INSERT INTO `actor` VALUES (1, '徐峥', '男', '1978-04-18');
 INSERT INTO `actor` VALUES (2, '彭于晏', '男', '1982-03-24');
 INSERT INTO `actor` VALUES (3, '周迅', '女', '1975-06-11');
@@ -44,25 +43,23 @@ INSERT INTO `actor` VALUES (8, '阿米尔汗', '男', '1969-06-12');
 INSERT INTO `actor` VALUES (9, '约翰尼德普', '男', '1976-10-28');
 INSERT INTO `actor` VALUES (10, '斯嘉丽约翰逊', '女', '1984-06-13');
 INSERT INTO `actor` VALUES (11, '布拉德皮特', '男', '1985-07-24');
-COMMIT;
 
 -- ----------------------------
 -- Table structure for actormovie
 -- ----------------------------
 DROP TABLE IF EXISTS `actormovie`;
-CREATE TABLE `actormovie` (
+CREATE TABLE `actormovie`  (
   `mid` int(10) NOT NULL,
   `aid` int(10) NOT NULL,
-  PRIMARY KEY (`mid`,`aid`) USING BTREE,
-  KEY `aid` (`aid`) USING BTREE,
+  PRIMARY KEY (`mid`, `aid`) USING BTREE,
+  INDEX `aid`(`aid`) USING BTREE,
   CONSTRAINT `actormovie_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `movie` (`mid`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `actormovie_ibfk_2` FOREIGN KEY (`aid`) REFERENCES `actor` (`aid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of actormovie
 -- ----------------------------
-BEGIN;
 INSERT INTO `actormovie` VALUES (1, 1);
 INSERT INTO `actormovie` VALUES (5, 2);
 INSERT INTO `actormovie` VALUES (6, 3);
@@ -74,62 +71,90 @@ INSERT INTO `actormovie` VALUES (10, 8);
 INSERT INTO `actormovie` VALUES (7, 9);
 INSERT INTO `actormovie` VALUES (11, 10);
 INSERT INTO `actormovie` VALUES (8, 11);
-COMMIT;
 
 -- ----------------------------
 -- Table structure for area
 -- ----------------------------
 DROP TABLE IF EXISTS `area`;
-CREATE TABLE `area` (
+CREATE TABLE `area`  (
   `areaid` int(10) NOT NULL,
-  `areaname` varchar(30) NOT NULL,
-  PRIMARY KEY (`areaid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `areaname` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`areaid`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of area
+-- ----------------------------
+INSERT INTO `area` VALUES (1, '中国大陆');
+INSERT INTO `area` VALUES (2, '美国');
+INSERT INTO `area` VALUES (3, '中国香港');
+INSERT INTO `area` VALUES (4, '印度');
+INSERT INTO `area` VALUES (5, '英国');
+INSERT INTO `area` VALUES (6, '法国');
+INSERT INTO `area` VALUES (7, '中国台湾');
+INSERT INTO `area` VALUES (8, '日本');
+INSERT INTO `area` VALUES (9, '韩国');
 
 -- ----------------------------
 -- Table structure for areamovie
 -- ----------------------------
 DROP TABLE IF EXISTS `areamovie`;
-CREATE TABLE `areamovie` (
+CREATE TABLE `areamovie`  (
   `mid` int(10) NOT NULL,
   `areaid` int(10) NOT NULL,
-  PRIMARY KEY (`mid`,`areaid`),
-  KEY `areamovie_ibfk_2` (`areaid`),
-  CONSTRAINT `areamovie_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `movie` (`mid`) ON UPDATE RESTRICT,
-  CONSTRAINT `areamovie_ibfk_2` FOREIGN KEY (`areaid`) REFERENCES `area` (`areaid`) ON UPDATE RESTRICT
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`mid`, `areaid`) USING BTREE,
+  INDEX `areamovie_ibfk_2`(`areaid`) USING BTREE,
+  CONSTRAINT `areamovie_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `movie` (`mid`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `areamovie_ibfk_2` FOREIGN KEY (`areaid`) REFERENCES `area` (`areaid`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of areamovie
+-- ----------------------------
+INSERT INTO `areamovie` VALUES (1, 1);
+INSERT INTO `areamovie` VALUES (2, 1);
+INSERT INTO `areamovie` VALUES (3, 1);
+INSERT INTO `areamovie` VALUES (4, 1);
+INSERT INTO `areamovie` VALUES (5, 1);
+INSERT INTO `areamovie` VALUES (6, 1);
+INSERT INTO `areamovie` VALUES (9, 1);
+INSERT INTO `areamovie` VALUES (7, 2);
+INSERT INTO `areamovie` VALUES (8, 2);
+INSERT INTO `areamovie` VALUES (11, 2);
+INSERT INTO `areamovie` VALUES (3, 3);
+INSERT INTO `areamovie` VALUES (10, 4);
+INSERT INTO `areamovie` VALUES (11, 5);
 
 -- ----------------------------
 -- Table structure for comment
 -- ----------------------------
 DROP TABLE IF EXISTS `comment`;
-CREATE TABLE `comment` (
+CREATE TABLE `comment`  (
   `uid` int(10) NOT NULL,
   `mid` int(10) NOT NULL,
   `score` int(2) NOT NULL,
-  `comment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `commentDate` date DEFAULT NULL,
-  `usefulNumber` int(10) DEFAULT NULL,
-  PRIMARY KEY (`uid`,`mid`) USING BTREE,
-  KEY `mid` (`mid`) USING BTREE,
+  `comment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `commentDate` date NULL DEFAULT NULL,
+  `usefulNumber` int(10) NULL DEFAULT NULL,
+  PRIMARY KEY (`uid`, `mid`) USING BTREE,
+  INDEX `mid`(`mid`) USING BTREE,
   CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`mid`) REFERENCES `movie` (`mid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for director
 -- ----------------------------
 DROP TABLE IF EXISTS `director`;
-CREATE TABLE `director` (
+CREATE TABLE `director`  (
   `directorid` int(10) NOT NULL AUTO_INCREMENT,
   `directorname` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`directorid`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of director
 -- ----------------------------
-BEGIN;
 INSERT INTO `director` VALUES (1, '克里斯托弗·诺兰');
 INSERT INTO `director` VALUES (2, '徐峥');
 INSERT INTO `director` VALUES (4, '张艺谋');
@@ -142,25 +167,23 @@ INSERT INTO `director` VALUES (10, '拉吉库马尔·希拉尼');
 INSERT INTO `director` VALUES (11, '岩井俊二');
 INSERT INTO `director` VALUES (12, ' 赵小丁');
 INSERT INTO `director` VALUES (13, ' 安东尼·拉默里纳拉');
-COMMIT;
 
 -- ----------------------------
 -- Table structure for directormovie
 -- ----------------------------
 DROP TABLE IF EXISTS `directormovie`;
-CREATE TABLE `directormovie` (
+CREATE TABLE `directormovie`  (
   `mid` int(10) NOT NULL,
   `directorid` int(10) NOT NULL,
-  PRIMARY KEY (`mid`,`directorid`) USING BTREE,
-  KEY `directorid` (`directorid`) USING BTREE,
+  PRIMARY KEY (`mid`, `directorid`) USING BTREE,
+  INDEX `directorid`(`directorid`) USING BTREE,
   CONSTRAINT `directormovie_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `movie` (`mid`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `directormovie_ibfk_2` FOREIGN KEY (`directorid`) REFERENCES `director` (`directorid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of directormovie
 -- ----------------------------
-BEGIN;
 INSERT INTO `directormovie` VALUES (11, 1);
 INSERT INTO `directormovie` VALUES (1, 2);
 INSERT INTO `directormovie` VALUES (3, 4);
@@ -173,28 +196,26 @@ INSERT INTO `directormovie` VALUES (10, 10);
 INSERT INTO `directormovie` VALUES (6, 11);
 INSERT INTO `directormovie` VALUES (4, 12);
 INSERT INTO `directormovie` VALUES (4, 13);
-COMMIT;
 
 -- ----------------------------
 -- Table structure for movie
 -- ----------------------------
 DROP TABLE IF EXISTS `movie`;
-CREATE TABLE `movie` (
+CREATE TABLE `movie`  (
   `mid` int(10) NOT NULL AUTO_INCREMENT,
   `mname` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `alias` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT '别名',
-  `intro` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '简介',
-  `imdbUrl` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL COMMENT 'imdb链接',
+  `alias` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '别名',
+  `intro` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '简介',
+  `imdbUrl` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT 'imdb链接',
   `language` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `releaseDate` date DEFAULT NULL COMMENT '上映日期',
+  `releaseDate` date NULL DEFAULT NULL COMMENT '上映日期',
   `duration` int(4) NOT NULL COMMENT '电影时长',
   PRIMARY KEY (`mid`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of movie
 -- ----------------------------
-BEGIN;
 INSERT INTO `movie` VALUES (1, '我不是药神', '中国药神/生命之路', '　　本片改编自慢粒白血病患者陆勇代购抗癌药的真实事迹。', 'http://www.imdb.com/title/tt7362036', '普通话 / 英语 /  印地语', '2018-07-05', 117);
 INSERT INTO `movie` VALUES (2, '无问西东', 'Forever Young', '如果提前了解了你所要面对的人生，你是否还会有勇气前来？吴岭澜、沈光耀、王敏佳、陈鹏、张果果，几个年轻人满怀诸多渴望，在四个非同凡响的时空中一路前行。 \r\n　　吴岭澜（陈楚生 饰），出发时意气风发，却很快在途中迷失了方向。沈光耀（王力宏 饰），自愿参与了最残酷的战争，他一直在努力去做那些令他害怕，但重要的事。王敏佳（章子怡 饰）最初的错误，只是为了虚荣撒了一个小谎；最初的烦恼，只是在两个优秀的男人中选择一个。但命运，却把她拖入被众人唾骂的深渊。陈鹏（黄晓明 饰）把爱情摆在了理想前面，但爱情却没有把他摆在前面。他说，“我有人要照顾”，纵然这意味着与所有人作对，意味着要和她一起被放逐千里。张果果（张震 饰），身处尔虞我诈的职场，“赢”是他的习惯。为了赢，他总是见招拆招，先发制人。而有一天，他却面临了一个比“赢”更重要的选择。这几个年轻人，在最好的年纪迎来了最残酷的...', 'http://www.imdb.com/title/tt2401825', '普通话', '2018-01-12', 138);
 INSERT INTO `movie` VALUES (3, '影', '荆州保卫战', '纷乱时局，群敌环伺。一个从小被秘密囚禁的替身，不甘只做他人手中的武器；但若想冲破枷锁，找回自我，又必将历经千难万险的考验；替身能否寻回自由，他又该如何选择？', 'https://www.imdb.com/title/tt6864046/', '普通话', '2018-09-30', 116);
@@ -206,45 +227,43 @@ INSERT INTO `movie` VALUES (8, '燃情岁月', '秋日传奇 / 真爱一世情(�
 INSERT INTO `movie` VALUES (9, '战狼2', '新战狼 / 新战死沙场', '故事发生在非洲附近的大海上，主人公冷锋（吴京 饰）遭遇人生滑铁卢，被“开除军籍”，本想漂泊一生的他，正当他打算这么做的时候，一场突如其来的意外打破了他的计划，突然被卷入了一场非洲国家叛乱，本可以安全撤离，却因无法忘记曾经为军人的使命，孤身犯险冲回沦陷区，带领身陷屠杀中的同胞和难民，展开生死逃亡。随着斗争的持续，体内的狼性逐渐复苏，最终孤身闯入战乱区域，为同胞而战斗。', 'http://www.imdb.com/title/tt7131870', '普通话 / 英语', '2017-07-27', 123);
 INSERT INTO `movie` VALUES (10, '三傻大闹宝莱坞', '三个傻瓜(台) / 作死不离3兄弟(港)', '本片根据印度畅销书作家奇坦·巴哈特（Chetan Bhagat）的处女作小说《五点人》（Five Point Someone）改编而成。法兰（马德哈万 R Madhavan 饰）、拉杜（沙曼·乔希 Sharman Joshi 饰）与兰乔（阿米尔·汗 Aamir Khan 饰）是皇家工程学院的学生，三人共居一室，结为好友。在以严格著称的学院里，兰乔是个非常与众不同的学生，他不死记硬背，甚至还公然顶撞校长“病毒”（波曼·伊拉尼 Boman Irani 饰），质疑他的教学方法。他不仅鼓动法兰与拉杜去勇敢追寻理想，还劝说校长的二女儿碧雅（卡琳娜·卡普 Kareena Kapoor 饰）离开满眼铜臭的未婚夫。兰乔的特立独行引起了模范学生“消音器”（奥米·维嘉 Omi Vaidya 饰）的不满，他约定十年后再与兰乔一决高下，看哪种生活方式更能取得成功。 ', 'http://www.imdb.com/title/tt1187043', '印地语 / 乌尔都语 / 英语', '2011-12-08', 171);
 INSERT INTO `movie` VALUES (11, '致命魔术', '顶尖对决(台) / 死亡魔法(港)', '19世纪末，人们对科学文明还不是认识得太过清楚，于是，安吉尔（休•杰克曼Hugh Jackman饰）和伯登（克里斯蒂安•贝尔Christian Bale饰）的魔术，成为了伦敦城内的神奇人物。安吉尔出身贵族，魔术手段华丽丰富，是富人圈子里的表演常客。而伯登即使出身平平，争强好胜的心智和充满创造力的魔术技巧，却也令他有了名气。两人自小本是要好的伙伴，然而，现在魔术界二人各有领地，并且都有野心想成为音乐大厅里的顶级魔术师，一番明争暗斗如箭在弦上。 \r\n　　伯登掌握了精彩的分身术，叫座又叫好。而安吉尔见情势不妙，搬来科学家助阵——他发明的交流电有无穷魔力，保证让观众目瞪口呆。二人出招接招，一来一往，争斗在剧烈升级，友谊和道德都被抛诸脑后，一场血案在悄悄酝酿。', 'http://www.imdb.com/title/tt0482571', '英语', '2006-10-20', 130);
-COMMIT;
 
 -- ----------------------------
 -- Table structure for picture
 -- ----------------------------
 DROP TABLE IF EXISTS `picture`;
-CREATE TABLE `picture` (
+CREATE TABLE `picture`  (
   `picid` int(10) NOT NULL,
-  ` piclocation` varchar(80) NOT NULL,
-  PRIMARY KEY (`picid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  ` piclocation` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`picid`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for picturemovie
 -- ----------------------------
 DROP TABLE IF EXISTS `picturemovie`;
-CREATE TABLE `picturemovie` (
+CREATE TABLE `picturemovie`  (
   `mid` int(10) NOT NULL,
   `picid` int(10) NOT NULL,
   PRIMARY KEY (`picid`) USING BTREE,
-  KEY `mid` (`mid`),
-  CONSTRAINT `picturemovie_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `movie` (`mid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  INDEX `mid`(`mid`) USING BTREE,
+  CONSTRAINT `picturemovie_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `movie` (`mid`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for playwright
 -- ----------------------------
 DROP TABLE IF EXISTS `playwright`;
-CREATE TABLE `playwright` (
+CREATE TABLE `playwright`  (
   `playwrightid` int(10) NOT NULL AUTO_INCREMENT,
   `playwrightname` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`playwrightid`) USING BTREE,
-  KEY `playwrightid` (`playwrightid`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+  INDEX `playwrightid`(`playwrightid`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of playwright
 -- ----------------------------
-BEGIN;
 INSERT INTO `playwright` VALUES (1, '李晗');
 INSERT INTO `playwright` VALUES (2, '刘晗');
 INSERT INTO `playwright` VALUES (3, '麦灵');
@@ -274,25 +293,23 @@ INSERT INTO `playwright` VALUES (26, '阿西奇·乔希');
 INSERT INTO `playwright` VALUES (27, '乔纳森·诺兰');
 INSERT INTO `playwright` VALUES (28, '克里斯托弗·诺兰');
 INSERT INTO `playwright` VALUES (29, '克里斯托弗·普瑞丝特');
-COMMIT;
 
 -- ----------------------------
 -- Table structure for playwrightmovie
 -- ----------------------------
 DROP TABLE IF EXISTS `playwrightmovie`;
-CREATE TABLE `playwrightmovie` (
+CREATE TABLE `playwrightmovie`  (
   `mid` int(10) NOT NULL,
   `playwrightid` int(10) NOT NULL,
-  PRIMARY KEY (`mid`,`playwrightid`) USING BTREE,
-  KEY `playwrightid` (`playwrightid`) USING BTREE,
+  PRIMARY KEY (`mid`, `playwrightid`) USING BTREE,
+  INDEX `playwrightid`(`playwrightid`) USING BTREE,
   CONSTRAINT `playwrightmovie_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `movie` (`mid`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `playwrightmovie_ibfk_2` FOREIGN KEY (`playwrightid`) REFERENCES `playwright` (`playwrightid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of playwrightmovie
 -- ----------------------------
-BEGIN;
 INSERT INTO `playwrightmovie` VALUES (4, 1);
 INSERT INTO `playwrightmovie` VALUES (4, 2);
 INSERT INTO `playwrightmovie` VALUES (4, 3);
@@ -322,22 +339,20 @@ INSERT INTO `playwrightmovie` VALUES (10, 26);
 INSERT INTO `playwrightmovie` VALUES (11, 27);
 INSERT INTO `playwrightmovie` VALUES (11, 28);
 INSERT INTO `playwrightmovie` VALUES (11, 29);
-COMMIT;
 
 -- ----------------------------
 -- Table structure for tag
 -- ----------------------------
 DROP TABLE IF EXISTS `tag`;
-CREATE TABLE `tag` (
+CREATE TABLE `tag`  (
   `mid` int(10) NOT NULL,
   `tagname` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`mid`,`tagname`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+  PRIMARY KEY (`mid`, `tagname`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tag
 -- ----------------------------
-BEGIN;
 INSERT INTO `tag` VALUES (1, '2018');
 INSERT INTO `tag` VALUES (1, '中国大陆');
 INSERT INTO `tag` VALUES (1, '人性');
@@ -416,49 +431,47 @@ INSERT INTO `tag` VALUES (11, '悬疑');
 INSERT INTO `tag` VALUES (11, '科幻');
 INSERT INTO `tag` VALUES (11, '美国');
 INSERT INTO `tag` VALUES (11, '魔术');
-COMMIT;
 
 -- ----------------------------
 -- Table structure for type
 -- ----------------------------
 DROP TABLE IF EXISTS `type`;
-CREATE TABLE `type` (
+CREATE TABLE `type`  (
   `typeid` int(10) NOT NULL,
   `typename` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`typeid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`typeid`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for typemovie
 -- ----------------------------
 DROP TABLE IF EXISTS `typemovie`;
-CREATE TABLE `typemovie` (
+CREATE TABLE `typemovie`  (
   `mid` int(10) NOT NULL,
   `typeid` int(10) NOT NULL,
-  PRIMARY KEY (`mid`,`typeid`),
-  KEY `typeid` (`typeid`),
-  CONSTRAINT `typemovie_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `movie` (`mid`),
-  CONSTRAINT `typemovie_ibfk_2` FOREIGN KEY (`typeid`) REFERENCES `type` (`typeid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`mid`, `typeid`) USING BTREE,
+  INDEX `typeid`(`typeid`) USING BTREE,
+  CONSTRAINT `typemovie_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `movie` (`mid`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `typemovie_ibfk_2` FOREIGN KEY (`typeid`) REFERENCES `type` (`typeid`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for user
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
+CREATE TABLE `user`  (
   `uid` int(10) NOT NULL AUTO_INCREMENT,
   `email` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `password` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `uname` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `phone` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `phone` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`uid`) USING BTREE,
-  UNIQUE KEY `email` (`email`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+  UNIQUE INDEX `email`(`email`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-BEGIN;
 INSERT INTO `user` VALUES (1, '100000@qq.com', '1234566', '张三', '13051337666');
 INSERT INTO `user` VALUES (2, '111111@qq.com', '124124', '李四', '13176528765');
 INSERT INTO `user` VALUES (3, '222222@qq.com', '1234124', '王五', '13276518765');
@@ -479,6 +492,5 @@ INSERT INTO `user` VALUES (17, 'Wangxz@gmail.com', 'dasjdfhg', 'Wxz', '177829087
 INSERT INTO `user` VALUES (18, 'Llei145@163.com', 'adsghgjjhvjk', 'Llei', '19187260987');
 INSERT INTO `user` VALUES (19, 'Wusuowei@gmail.com', '123456', 'Wusuowei', '18765309876');
 INSERT INTO `user` VALUES (20, '15849076578@qq.com', '6543231', 'Fyc', '13051477289');
-COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
