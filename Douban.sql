@@ -11,7 +11,7 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 20/12/2018 14:10:15
+ Date: 20/12/2018 14:15:26
 */
 
 SET NAMES utf8mb4;
@@ -239,6 +239,24 @@ CREATE TABLE `picture`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of picture
+-- ----------------------------
+INSERT INTO `picture` VALUES (1, 'd:\\database\\img\\1.jpg');
+INSERT INTO `picture` VALUES (2, 'd:\\database\\img\\2.jpg');
+INSERT INTO `picture` VALUES (3, 'd:\\database\\img\\3.jpg');
+INSERT INTO `picture` VALUES (4, 'd:\\database\\img\\4.jpg');
+INSERT INTO `picture` VALUES (5, 'd:\\database\\img\\5.jpg');
+INSERT INTO `picture` VALUES (6, 'd:\\database\\img\\6.jpg');
+INSERT INTO `picture` VALUES (7, 'd:\\database\\img\\7.jpg');
+INSERT INTO `picture` VALUES (8, 'd:\\database\\img\\8.jpg');
+INSERT INTO `picture` VALUES (9, 'd:\\database\\img\\9.jpg');
+INSERT INTO `picture` VALUES (10, 'd:\\database\\img\\10.jpg');
+INSERT INTO `picture` VALUES (11, 'd:\\database\\img\\11.jpg');
+INSERT INTO `picture` VALUES (12, 'd:\\database\\img\\12.jpg');
+INSERT INTO `picture` VALUES (13, 'd:\\database\\img\\13.jpg');
+INSERT INTO `picture` VALUES (14, 'd:\\database\\img\\14.jpg');
+
+-- ----------------------------
 -- Table structure for picturemovie
 -- ----------------------------
 DROP TABLE IF EXISTS `picturemovie`;
@@ -249,6 +267,24 @@ CREATE TABLE `picturemovie`  (
   INDEX `mid`(`mid`) USING BTREE,
   CONSTRAINT `picturemovie_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `movie` (`mid`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of picturemovie
+-- ----------------------------
+INSERT INTO `picturemovie` VALUES (1, 3);
+INSERT INTO `picturemovie` VALUES (2, 2);
+INSERT INTO `picturemovie` VALUES (3, 1);
+INSERT INTO `picturemovie` VALUES (4, 5);
+INSERT INTO `picturemovie` VALUES (4, 9);
+INSERT INTO `picturemovie` VALUES (5, 4);
+INSERT INTO `picturemovie` VALUES (5, 11);
+INSERT INTO `picturemovie` VALUES (5, 14);
+INSERT INTO `picturemovie` VALUES (6, 6);
+INSERT INTO `picturemovie` VALUES (7, 7);
+INSERT INTO `picturemovie` VALUES (8, 8);
+INSERT INTO `picturemovie` VALUES (9, 10);
+INSERT INTO `picturemovie` VALUES (10, 13);
+INSERT INTO `picturemovie` VALUES (11, 12);
 
 -- ----------------------------
 -- Table structure for playwright
