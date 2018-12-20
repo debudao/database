@@ -4,10 +4,6 @@ public class Movie {
 
 	private int mid;
 	private String mname;
-	private String type;
-	private String mainActors;
-	private String area;
-	private float mscore;
 	private String alias;
 	private String intro;
 	private String imdbUrl;
@@ -77,38 +73,7 @@ public class Movie {
 		this.mname = mname;
 	}
 
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getMainActors() {
-		return mainActors;
-	}
-
-	public void setMainActors(String mainActors) {
-		this.mainActors = mainActors;
-	}
-
-	public String getArea() {
-		return area;
-	}
-
-	public void setArea(String area) {
-		this.area = area;
-	}
-
-
-	public float getMscore() {
-		return mscore;
-	}
-
-	public void setMscore(float mscore) {
-		this.mscore = mscore;
-	}
+	
 
 	public void setMid(int mid) {
 		this.mid = mid;
