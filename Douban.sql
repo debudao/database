@@ -11,7 +11,7 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 20/12/2018 14:15:26
+ Date: 20/12/2018 14:26:38
 */
 
 SET NAMES utf8mb4;
@@ -479,6 +479,24 @@ CREATE TABLE `type`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of type
+-- ----------------------------
+INSERT INTO `type` VALUES (1, '剧情');
+INSERT INTO `type` VALUES (2, '悬疑');
+INSERT INTO `type` VALUES (3, '惊悚');
+INSERT INTO `type` VALUES (4, '喜剧');
+INSERT INTO `type` VALUES (5, '动作');
+INSERT INTO `type` VALUES (6, '武侠');
+INSERT INTO `type` VALUES (7, '古装');
+INSERT INTO `type` VALUES (8, '爱情');
+INSERT INTO `type` VALUES (9, '战争');
+INSERT INTO `type` VALUES (10, '奇幻');
+INSERT INTO `type` VALUES (11, '冒险');
+INSERT INTO `type` VALUES (12, '家庭');
+INSERT INTO `type` VALUES (13, '西部');
+INSERT INTO `type` VALUES (14, '歌舞');
+
+-- ----------------------------
 -- Table structure for typemovie
 -- ----------------------------
 DROP TABLE IF EXISTS `typemovie`;
@@ -490,6 +508,41 @@ CREATE TABLE `typemovie`  (
   CONSTRAINT `typemovie_ibfk_1` FOREIGN KEY (`mid`) REFERENCES `movie` (`mid`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `typemovie_ibfk_2` FOREIGN KEY (`typeid`) REFERENCES `type` (`typeid`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of typemovie
+-- ----------------------------
+INSERT INTO `typemovie` VALUES (1, 1);
+INSERT INTO `typemovie` VALUES (2, 1);
+INSERT INTO `typemovie` VALUES (3, 1);
+INSERT INTO `typemovie` VALUES (5, 1);
+INSERT INTO `typemovie` VALUES (6, 1);
+INSERT INTO `typemovie` VALUES (8, 1);
+INSERT INTO `typemovie` VALUES (10, 1);
+INSERT INTO `typemovie` VALUES (11, 1);
+INSERT INTO `typemovie` VALUES (11, 2);
+INSERT INTO `typemovie` VALUES (11, 3);
+INSERT INTO `typemovie` VALUES (1, 4);
+INSERT INTO `typemovie` VALUES (5, 4);
+INSERT INTO `typemovie` VALUES (10, 4);
+INSERT INTO `typemovie` VALUES (3, 5);
+INSERT INTO `typemovie` VALUES (5, 5);
+INSERT INTO `typemovie` VALUES (7, 5);
+INSERT INTO `typemovie` VALUES (9, 5);
+INSERT INTO `typemovie` VALUES (3, 6);
+INSERT INTO `typemovie` VALUES (3, 7);
+INSERT INTO `typemovie` VALUES (2, 8);
+INSERT INTO `typemovie` VALUES (4, 8);
+INSERT INTO `typemovie` VALUES (6, 8);
+INSERT INTO `typemovie` VALUES (8, 8);
+INSERT INTO `typemovie` VALUES (10, 8);
+INSERT INTO `typemovie` VALUES (2, 9);
+INSERT INTO `typemovie` VALUES (4, 10);
+INSERT INTO `typemovie` VALUES (7, 10);
+INSERT INTO `typemovie` VALUES (7, 11);
+INSERT INTO `typemovie` VALUES (8, 12);
+INSERT INTO `typemovie` VALUES (8, 13);
+INSERT INTO `typemovie` VALUES (10, 14);
 
 -- ----------------------------
 -- Table structure for user
