@@ -4,7 +4,7 @@ public class Comment {
 
 	private int uid;
 	private int mid;
-	private int score;
+	private float score;
 	private String comment;
 	private String commentDate;
 	private int usefulNumber;
@@ -25,11 +25,11 @@ public class Comment {
 		this.mid = mid;
 	}
 
-	public int getScore() {
+	public float getScore() {
 		return score;
 	}
 
-	public void setScore(int score) {
+	public void setScore(float score) {
 		this.score = score;
 	}
 
