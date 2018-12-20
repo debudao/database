@@ -19,13 +19,12 @@ public class UserDao extends DaoBase implements UserDaoable{
 			+ "where email=? and password=?";
 	
 	
-	public UserDao() throws SQLException {
-		conn = getConnection();
-	}
+
 	
 	
 	@Override
 	public boolean addUser(User user) throws SQLException{		
+		conn = getConnection();
 		ps = conn.prepareStatement(ADD_USER_SQL);
 		ps.setString(1, user.getEmail());
 		ps.setString(2, user.getPassword());
@@ -38,7 +37,8 @@ public class UserDao extends DaoBase implements UserDaoable{
 	}
 	
 	@Override
-	public boolean updateUser(User user) throws SQLException{		
+	public boolean updateUser(User user) throws SQLException{
+		conn = getConnection();
 		ps = conn.prepareStatement(UPDATE_USER_SQL);
 		ps.setString(1,user.getPassword());
 		ps.setString(2, user.getUname());
@@ -53,6 +53,7 @@ public class UserDao extends DaoBase implements UserDaoable{
 
 	@Override
 	public ArrayList<User> searchUser(String name) throws SQLException {
+		conn = getConnection();
 		ps=conn.prepareStatement(SEARCH_USER_SQL);
 		ps.setString(1, name);
 		rs=ps.executeQuery();
@@ -66,7 +67,7 @@ public class UserDao extends DaoBase implements UserDaoable{
 			users.add(u);
 		}
 		
-		
+		release(conn, ps, rs);
 		return users;
 	}
 
@@ -74,12 +75,13 @@ public class UserDao extends DaoBase implements UserDaoable{
 
 	@Override
 	public boolean loginUser(String email, String password) throws SQLException {
+		conn = getConnection();
 		ps=conn.prepareStatement(LOGIN_USER_SQL);
 		ps.setString(1, email);
 		ps.setString(2, password);
 		rs=ps.executeQuery();
 		
-		
+		release(conn, ps, rs);
 		return rs.next();
 	}
 	
