@@ -81,8 +81,10 @@ public class UserDao extends DaoBase implements UserDaoable{
 		ps.setString(2, password);
 		rs=ps.executeQuery();
 		
+		int flag = 0;
+		if(rs.next()) flag = 1;
 		release(conn, ps, rs);
-		return rs.next();
+		return flag==1?true:false;
 	}
 	
 }
