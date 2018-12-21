@@ -14,7 +14,7 @@ public class UserDao extends DaoBase implements UserDaoable{
 	private static final String UPDATE_USER_SQL="update User set password=?,uname=?,phone=? "
 			+ "where uid=?";
 	private static final String SEARCH_USER_SQL="select * from user "
-			+ "where uname like %?%";
+			+ "where uname like '%?%'";
 	private static final String LOGIN_USER_SQL="select * from user "
 			+ "where email=? and password=?";
 	
