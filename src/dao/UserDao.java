@@ -14,7 +14,7 @@ public class UserDao extends DaoBase implements UserDaoable{
 	private static final String UPDATE_USER_SQL="update User set password=?,uname=?,phone=? "
 			+ "where uid=?";
 	private static final String SEARCH_USER_SQL="select * from user "
-			+ "where uname like '%?%'";
+			+ "where uname like ?";
 	private static final String LOGIN_USER_SQL="select * from user "
 			+ "where email=? and password=?";
 	
@@ -55,7 +55,7 @@ public class UserDao extends DaoBase implements UserDaoable{
 	public ArrayList<User> searchUser(String name) throws SQLException {
 		conn = getConnection();
 		ps=conn.prepareStatement(SEARCH_USER_SQL);
-		ps.setString(1, name);
+		ps.setString(1, "%"+name+"%");
 		rs=ps.executeQuery();
 		
 		ArrayList<User> users=new ArrayList<User>();
