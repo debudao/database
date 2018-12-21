@@ -79,12 +79,12 @@ public class MovieDao extends DaoBase implements MovieDaoable{
 	
 	@Override
 	public ArrayList<Picture> getAllPictures(Movie movie) throws SQLException {
-		
+
 		conn=getConnection();
-		ps=conn.prepareStatement(DELETE_MOVIE_PICTURE_SQL);
+		ps=conn.prepareStatement(GET_ALL_MOVIE_PICTURE_SQL);
 		ps.setInt(1, movie.getMid());
 		rs=ps.executeQuery();
-		
+
 		ArrayList<Picture> pictures=new ArrayList<Picture>();
 		while(rs.next()){
 			Picture p=new Picture();
@@ -528,8 +528,8 @@ public class MovieDao extends DaoBase implements MovieDaoable{
 	
 	@Override
 	public float getAverScore(Movie m) throws SQLException {
-		
-		ps = conn.prepareStatement(GET_AVER_SCORE_SQL);
+		conn=getConnection();
+		ps = conn.prepareStatement(GET_AVER_SCORE_SQL);	
 		ps.setInt(1, m.getMid());
 		ResultSet rs=ps.executeQuery();
 		float f=0;
