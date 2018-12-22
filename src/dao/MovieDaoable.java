@@ -36,7 +36,7 @@ public interface MovieDaoable extends Dao {
 	/**
 	 * get all pictures of the movie
 	 * @param movie the movie you want to get the picture
-	 * @return a list of movies
+	 * @return a list of Picture
 	 * @throws SQLException
 	 */
 	public ArrayList<Picture> getAllPictures(Movie movie) throws SQLException;
@@ -70,7 +70,7 @@ public interface MovieDaoable extends Dao {
 	/**
 	 * get all type of the movie
 	 * @param movie the movie you want to get the type
-	 * @return a list of movies
+	 * @return a list of Type
 	 * @throws SQLException
 	 */
 	public ArrayList<Type> getAllType(Movie movie) throws SQLException;
@@ -104,7 +104,7 @@ public interface MovieDaoable extends Dao {
 	/**
 	 * get all area of the movie
 	 * @param movie the movie you want to get the area
-	 * @return a list of movies
+	 * @return a list of Area
 	 * @throws SQLException
 	 */
 	public ArrayList<Area> getAllArea(Movie movie) throws SQLException;
@@ -138,7 +138,7 @@ public interface MovieDaoable extends Dao {
 	/**
 	 * get all director of the movie
 	 * @param movie the movie you want to get the director
-	 * @return a list of movies
+	 * @return a list of Director
 	 * @throws SQLException
 	 */
 	public ArrayList<Director> getAllDirector(Movie movie) throws SQLException;
@@ -172,7 +172,7 @@ public interface MovieDaoable extends Dao {
 	/**
 	 * get all actor of the movie
 	 * @param movie the movie you want to get the actor
-	 * @return a list of movies
+	 * @return a list of Actor
 	 * @throws SQLException
 	 */
 	public ArrayList<Actor> getAllActor(Movie movie) throws SQLException;
@@ -206,10 +206,44 @@ public interface MovieDaoable extends Dao {
 	/**
 	 * get all playwright of the movie
 	 * @param movie the movie you want to get the playwright
-	 * @return a list of movies
+	 * @return a list of Playwright
 	 * @throws SQLException
 	 */
 	public ArrayList<Playwright> getAllPlaywright(Movie movie) throws SQLException;
+	
+	/**
+	 * add a tag to a movie
+	 * @param m the movie you want to add a tag
+	 * @param tag the tag added to the movie
+	 * @return if success return true,else return false
+	 * @throws SQLException
+	 */
+	public boolean addMovieTag(Movie m,Tag tag) throws SQLException;
+	
+	/**
+	 * delete a tag from a movie
+	 * @param m the movie you want to delete a tag
+	 * @param tag the tag deleted from the movie
+	 * @return if success return true,else return false
+	 * @throws SQLException
+	 */
+	public boolean deleteMovieTag(Movie m,Tag tag) throws SQLException;
+	
+	/**
+	 * search all the movies by a list of tag
+	 * @param tags a list tag of the movies you want to search
+	 * @return a list of movies
+	 * @throws SQLException
+	 */
+	public ArrayList<Movie> searchMovieByTags(Tag[] tags) throws SQLException;
+	
+	/**
+	 * get all tags of the movie
+	 * @param movie the movie you want to get the playwright
+	 * @return a list of tags
+	 * @throws SQLException
+	 */
+	public ArrayList<Tag> getAllTag(Movie movie) throws SQLException;
 	
 	/**
 	 * get the average score of the movie
