@@ -235,7 +235,7 @@ public interface MovieDaoable extends Dao {
 	 * @return a list of movies
 	 * @throws SQLException
 	 */
-	public ArrayList<Movie> searchMovieByTags(Tag[] tags) throws SQLException;
+	public ArrayList<Movie> searchMovieByTags(ArrayList<Tag> tags) throws SQLException;
 	
 	/**
 	 * get all tags of the movie

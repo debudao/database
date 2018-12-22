@@ -10,6 +10,7 @@ import entity.Director;
 import entity.Movie;
 import entity.Picture;
 import entity.Playwright;
+import entity.Tag;
 import entity.Type;
 
 public class TestMovie {
@@ -24,7 +25,8 @@ public class TestMovie {
 		Area a = new Area();
 		Director d = new Director();
 		Actor act = new Actor();
-		Playwright pl = new Playwright(); 
+		Playwright pl = new Playwright();
+		Tag tg = new Tag();
 		
 		//test add movie
 		/*m.setMname("无名之辈");
@@ -188,7 +190,7 @@ public class TestMovie {
 		}*/
 		
 		//test add playwright of the movie
-		/*pl.setPlaywrightid(30);;
+		/*pl.setPlaywrightid(30);
 		m.setMid(1);
 		if(md.addMoviePlaywright(m,pl) == true){
 			System.out.println("add playwright successful!");
@@ -196,7 +198,7 @@ public class TestMovie {
 		else System.out.println("add playwright failed!");*/
 										
 		//test delete playwright of the movie
-		/*pl.setPlaywrightid(30);;
+		/*pl.setPlaywrightid(30);
 		m.setMid(1);
 		if(md.deleteMoviePlaywright(m,pl) == true){
 			System.out.println("delete playwright successful!");
@@ -221,6 +223,32 @@ public class TestMovie {
 		//test the get the avrege score of the movie
 		/*m.setMid(1);
 		System.out.println(md.getAverScore(m));*/
+		
+		//test add tag of the movie
+		/*tg.setTagname("魔幻");
+		m.setMid(1);
+		if(md.addMovieTag(m, tg) == true){
+			System.out.println("add tag successful!");
+		}
+		else System.out.println("add tag failed!");*/
+												
+		//test delete tag of the movie
+		/*tg.setTagname("魔幻");
+		m.setMid(1);
+		if(md.deleteMovieTag(m, tg) == true){
+			System.out.println("delete tag successful!");
+		}
+		else System.out.println("delete tag failed!");*/
+												
+		//test get all tags of movie and search the movies by tag
+		/*m.setMid(1);
+		ArrayList<Tag> tags = md.getAllTag(m);
+		ArrayList<Movie> mv = md.searchMovieByTags(tags);
+		for(int i=0;i<mv.size();i++){
+			System.out.println(mv.get(i).getMid()+" "+mv.get(i).getMname()+" "+mv.get(i).getAlias()+" "+mv.get(i).getLanguage()+" "+mv.get(i).getImdbUrl()+" "+mv.get(i).getDuration()+" "+mv.get(i).getReleaseDate());
+			System.out.println(mv.get(i).getIntro());
+		}*/
+		
 	}
 
 }

@@ -1,7 +1,6 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -577,13 +576,14 @@ public class MovieDao extends DaoBase implements MovieDaoable{
 	private static final String SEARCH_MOVIE_TAG_SQL="select mid from tag where tagname=?";
 
 	@Override
-	public ArrayList<Movie> searchMovieByTags(Tag[] tags) throws SQLException {
+	public ArrayList<Movie> searchMovieByTags(ArrayList<Tag> tags) throws SQLException {
 		
 		conn=getConnection();
 		ps=conn.prepareStatement(SEARCH_MOVIE_TAG_SQL);	
 		ArrayList<ArrayList<Integer>> aa=new ArrayList<ArrayList<Integer>>();
 		
 		for(Tag t:tags){
+			System.out.println(t.getTagname());
 			ps.setString(1, t.getTagname());
 			rs=ps.executeQuery();
 			ArrayList<Integer> a=new ArrayList<Integer>();
@@ -592,7 +592,7 @@ public class MovieDao extends DaoBase implements MovieDaoable{
 			
 			aa.add(a);
 		}
-		
+		System.out.println("1");
 		ArrayList<Integer> res=new ArrayList<Integer>();
 		if(aa.size()==1)
 			res=aa.get(0);
