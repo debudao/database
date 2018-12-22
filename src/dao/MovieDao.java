@@ -14,6 +14,7 @@ import entity.Director;
 import entity.Movie;
 import entity.Picture;
 import entity.Playwright;
+import entity.Tag;
 import entity.Type;
 
 public class MovieDao extends DaoBase implements MovieDaoable{
@@ -539,6 +540,129 @@ public class MovieDao extends DaoBase implements MovieDaoable{
 		
 		release(conn, ps, rs);
 		return f;
+	}
+
+	private static final String ADD_MOVIE_TAG_SQL="insert tag(mid,tagname) "
+			+ "values(?,?)";
+	
+	@Override
+	public boolean addMovieTag(Movie m, Tag tag) throws SQLException {
+		
+		conn=getConnection();
+		ps=conn.prepareStatement(ADD_MOVIE_TAG_SQL);
+		ps.setInt(1, m.getMid());
+		ps.setString(2, tag.getTagname());
+		int flag=ps.executeUpdate();
+		
+		release(conn, ps, rs);
+		return flag==1?true:false;
+	}
+
+	private static final String DELETE_MOVIE_TAG_SQL="delete from tag "
+			+ "where mid=? and tagname=?";
+	
+	@Override
+	public boolean deleteMovieTag(Movie m, Tag tag) throws SQLException {
+		
+		conn=getConnection();
+		ps=conn.prepareStatement(DELETE_MOVIE_TAG_SQL);
+		ps.setInt(1, m.getMid());
+		ps.setString(2, tag.getTagname());
+		int flag=ps.executeUpdate();
+		
+		release(conn, ps, rs);
+		return flag==1?true:false;
+	}
+	
+	private static final String SEARCH_MOVIE_TAG_SQL="select mid from tag where tagname=?";
+
+	@Override
+	public ArrayList<Movie> searchMovieByTags(Tag[] tags) throws SQLException {
+		
+		conn=getConnection();
+		ps=conn.prepareStatement(SEARCH_MOVIE_TAG_SQL);	
+		ArrayList<ArrayList<Integer>> aa=new ArrayList<ArrayList<Integer>>();
+		
+		for(Tag t:tags){
+			ps.setString(1, t.getTagname());
+			rs=ps.executeQuery();
+			ArrayList<Integer> a=new ArrayList<Integer>();
+			while (rs.next())
+				a.add(rs.getInt("mid"));
+			
+			aa.add(a);
+		}
+		
+		ArrayList<Integer> res=new ArrayList<Integer>();
+		if(aa.size()==1)
+			res=aa.get(0);
+		else{
+			for(int i=0;i<aa.get(0).size();i++){
+				int flag=1;
+				for(int j=1;j<aa.size();j++){
+					if(isContain(aa.get(0).get(i), aa.get(j)))
+						continue;
+					else{
+						flag=0;
+						break;
+					}
+						
+				}
+				if(flag==1)
+					res.add(aa.get(0).get(i));
+			}
+		}
+		
+		ArrayList<Movie> movies=new ArrayList<Movie>();
+		String sql="select * from movie where mid=?";
+		for(int i=0;i<res.size();i++){
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, res.get(i));
+			rs=ps.executeQuery();
+			if(rs.next()){
+				Movie m=new Movie();
+				m.setMid(rs.getInt("mid"));
+				m.setMname(rs.getString("mname"));
+				m.setAlias(rs.getString("alias"));
+				m.setIntro(rs.getString("intro"));
+				m.setImdbUrl(rs.getString("imdbUrl"));
+				m.setLanguage(rs.getString("language"));
+				m.setReleaseDate(rs.getString("releaseDate"));
+				m.setDuration(rs.getInt("duration"));
+				movies.add(m);
+			}
+				
+		}
+		
+		return movies;
+		
+	}
+	
+	private boolean isContain(int a,ArrayList<Integer> b){
+		return b.contains(a);
+	}
+
+	private static final String GET_ALL_MOVIE_TAG_SQL="select mid,tagname "
+			+ "from tag where mid=?";
+	
+	@Override
+	public ArrayList<Tag> getAllTag(Movie movie) throws SQLException {
+		
+		conn=getConnection();
+		ps=conn.prepareStatement(GET_ALL_MOVIE_TAG_SQL);
+		ps.setInt(1, movie.getMid());
+		rs=ps.executeQuery();
+		
+		ArrayList<Tag> tags=new ArrayList<Tag>();
+		while(rs.next()){
+			Tag t=new Tag();
+			t.setMid(rs.getInt("mid"));
+			t.setTagname(rs.getString("tagname"));
+			tags.add(t);
+		}
+		
+		release(conn, ps, rs);
+		return tags;
 	}
 
 
