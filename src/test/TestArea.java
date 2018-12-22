@@ -18,14 +18,14 @@ public class TestArea {
 		if(ad.addArea(a) == true){
 			System.out.println("add area successful!");
 		}
-		else System.out.println("add area successful!");*/
+		else System.out.println("add area failed!");*/
 		
 		//test delete area
 		/*a.setAreaid(10);
 		if(ad.deleteArea(a) == true){
 			System.out.println("delete area successful!");
 		}
-		else System.out.println("delete area successful!");*/
+		else System.out.println("delete area failed!");*/
 	}
 
 }

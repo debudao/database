@@ -19,14 +19,14 @@ public class TestDirector {
 		if(dd.addDirector(d) == true){
 			System.out.println("add director successful!");
 		}
-		else System.out.println("add director successsful!");*/
+		else System.out.println("add director failed!");*/
 		
 		//test delete director
 		/*d.setDirectorid(14);
 		if(dd.deleteDirector(d) == true){
 			System.out.println("delete director successful!");
 		}
-		else System.out.println("delete director successsful!");*/
+		else System.out.println("delete director failed!");*/
 	
 	}
 }
