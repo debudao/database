@@ -279,7 +279,7 @@ INSERT INTO `movie` VALUES (11, '致命魔术', '顶尖对决(台) / 死亡魔�
 DROP TABLE IF EXISTS `picture`;
 CREATE TABLE `picture`  (
   `picid` int(10) NOT NULL,
-  ` piclocation` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `piclocation` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`picid`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
