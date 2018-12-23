@@ -22,8 +22,8 @@ public class TypeDao extends DaoBase implements TypeDaoable {
 		return flag == 1 ? true : false;
 	}
 
-	private static final String DELETE_TYPE_SQL = "delete from area "
-			+ "where areaid=?";
+	private static final String DELETE_TYPE_SQL = "delete from type "
+			+ "where typeid=?";
 
 	@Override
 	public boolean deleteType(Type t) throws SQLException {
