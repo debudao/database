@@ -41,8 +41,15 @@ public class TestMovie {
 		}
 		else System.out.println("add movie failed!");*/
 		
+		//test delete movie
+		/*m.setMid(13);
+		if(md.deleteMovie(m) == true){
+			System.out.println("delete movie successful!");
+		}
+		else System.out.println("delete movie failed!");*/
+		
 		//test add picture of the movie
-		/*m.setMid(12);
+		/*m.setMid(13);
 		p.setPicid(15);
 		if(md.addMoviePicture(m,p) == true){
 			System.out.println("add picture successful!");
