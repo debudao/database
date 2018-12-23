@@ -16,6 +16,14 @@ public interface MovieDaoable extends Dao {
 	public boolean addMovie(Movie m) throws SQLException;
 	
 	/**
+	 * delete a movie
+	 * @param m the movie you want to delete
+	 * @return if success return true,else return false
+	 * @throws SQLException
+	 */
+	public boolean deleteMovie(Movie m) throws SQLException;
+	
+	/**
 	 * add a picture to a movie
 	 * @param m the movie you want to add a picture
 	 * @param picture the picture added to the movie

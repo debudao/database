@@ -38,6 +38,20 @@ public class MovieDao extends DaoBase implements MovieDaoable{
 		release(conn, ps, rs);
 		return flag==1?true:false;	
 	}
+	
+	private static final String DELETE_MOVIE_SQL="delete from movie "
+			+ "where mid=?";
+	
+	@Override
+	public boolean deleteMovie(Movie m) throws SQLException {
+		conn=getConnection();
+		ps=conn.prepareStatement(DELETE_MOVIE_SQL);
+		ps.setInt(1, m.getMid());
+		int flag=ps.executeUpdate();
+		
+		release(conn, ps, rs);
+		return flag==1?true:false;	
+	}
 
 	private static final String ADD_MOVIE_PICTURE_SQL="insert picturemovie(mid,picid) "
 			+ "values(?,?)";
@@ -664,6 +678,8 @@ public class MovieDao extends DaoBase implements MovieDaoable{
 		release(conn, ps, rs);
 		return tags;
 	}
+
+	
 
 
 
